@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "617205630187",
+    "firebase_url": "https://musicwithnav.firebaseio.com",
+    "project_id": "musicwithnav",
+    "storage_bucket": "musicwithnav.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:617205630187:android:3f57752434c6e3fd80aaae",
+        "android_client_info": {
+          "package_name": "com.example.musicwithnav"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "617205630187-rdhb4hbmkjfh0oj2t87o8n3qc8832q7c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.musicwithnav",
+            "certificate_hash": "87984e5e185341c655d21d597bcc87fe967c45c5"
+          }
+        },
+        {
+          "client_id": "617205630187-26rtjru1qi2rmpmpflrj7vrprd76q1bp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDAYcd1X2ZYO9oJmjPo74VTFNVw2DE0yM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "617205630187-26rtjru1qi2rmpmpflrj7vrprd76q1bp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

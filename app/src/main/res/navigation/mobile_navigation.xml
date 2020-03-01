@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.musicwithnav.ui.home.HomeFragment"
+        android:label="@string/title_discover"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_hits"
+        android:name="com.example.musicwithnav.ui.dashboard.DashboardFragment"
+        android:label="@string/title_hits"
+        tools:layout="@layout/fragment_dashboard" />
+
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="com.example.musicwithnav.ui.notifications.NotificationsFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/addFragment"
+        android:name="com.example.musicwithnav.ui.addFiles.AddFragment"
+        android:label="add_fragment"
+        tools:layout="@layout/add_fragment" />
+    <fragment
+        android:id="@+id/navigation_user_dashboard"
+        android:name="com.example.musicwithnav.ui.UserDashboard.UserDashboardFragment"
+        android:label="user_dashboard_fragment"
+        tools:layout="@layout/user_dashboard_fragment" />
+    <fragment
+        android:id="@+id/artistFragment"
+        android:name="com.example.musicwithnav.ui.home.inHomeFragment.ArtistFragment"
+        android:label="fragment_artist"
+        tools:layout="@layout/fragment_acapella" />
+    <fragment
+        android:id="@+id/producerFragment"
+        android:name="com.example.musicwithnav.ui.home.inHomeFragment.ProducerFragment"
+        android:label="fragment_producer"
+        tools:layout="@layout/fragment_Beat"/>
+    <fragment
+        android:id="@+id/instrumentalFragment"
+        android:name="com.example.musicwithnav.ui.home.inHomeFragment.InstrumentalFragment"
+        android:label="fragment_acapella"
+        tools:layout="@layout/fragment_acapella" />
+</navigation>

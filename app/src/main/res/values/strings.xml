@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">MusicWithNav</string>
+    <string name="title_discover">Discover</string>
+    <string name="title_hits">Hits</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_add">Add</string>
+    <string name="title_user_dashboard">User DashBoard</string>
+    <string-array name="sounds_types">
+        <item>Choose Sound Type…</item>
+        <item>Beat</item>
+        <item>Instrumental</item>
+        <item>Acapella</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="dialog_delete_sound">are you sure?</string>
+    <string name="agree_delete_sound">delete</string>
+    <string name="cancel_delete_sound">cancel</string>
+
+</resources>
