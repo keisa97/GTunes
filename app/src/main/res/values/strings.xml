@@ -10,6 +10,7 @@
         <item>Beat</item>
         <item>Instrumental</item>
         <item>Acapella</item>
+        <item>Song</item>
     </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -17,5 +18,10 @@
     <string name="dialog_delete_sound">are you sure?</string>
     <string name="agree_delete_sound">delete</string>
     <string name="cancel_delete_sound">cancel</string>
+    <string name="delete">delete</string>
+    <string name="areYouSureYouWantToDeleteThisMessage">sure you want delete this message?</string>
+    <string name="no">No</string>
+    <string name="messageDeleted">message deleted</string>
+    <string name="youCanDeleteOnlyYourMessages">you can delete only your messges</string>
 
 </resources>

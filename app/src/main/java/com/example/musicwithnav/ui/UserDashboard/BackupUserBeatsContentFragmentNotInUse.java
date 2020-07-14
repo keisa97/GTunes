@@ -4,13 +4,6 @@ package com.example.musicwithnav.ui.UserDashboard;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,14 +11,20 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.musicwithnav.R;
-import com.example.musicwithnav.Sound;
-import com.example.musicwithnav.ui.home.inHomeFragment.ProducerFragment;
+import com.example.musicwithnav.models.Sound;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
@@ -34,7 +33,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class UserContentFragment extends Fragment {
+public class BackupUserBeatsContentFragmentNotInUse extends Fragment {
 
 
     private View soundsView;
@@ -42,20 +41,21 @@ public class UserContentFragment extends Fragment {
 
     List<Sound> soundsList = new ArrayList<>();
 
-    FirebaseRecyclerAdapter<Sound, UserContentFragment.SoundsViewHolder> adapter;
+    FirebaseRecyclerAdapter<Sound, BackupUserBeatsContentFragmentNotInUse.SoundsViewHolder> adapter;
 
     // private FirebaseDatabase database; //= FirebaseDatabase.getInstance();
 
 
     private DatabaseReference soundsRef, userRef;
     private DatabaseReference samplesRef, songRef, vocalRef;
-
+    private FirebaseStorage firebaseStorage;
+    private StorageReference storageReference;
     private FirebaseAuth auth;
 
     private String currentUserId;
 
 
-    public UserContentFragment() {
+    public BackupUserBeatsContentFragmentNotInUse() {
         // Required empty public constructor
     }
 
@@ -78,7 +78,8 @@ public class UserContentFragment extends Fragment {
 
 
 
-        samplesRef = FirebaseDatabase.getInstance().getReference().child("sound").child("Instrumental");
+        samplesRef = FirebaseDatabase.getInstance().getReference().child("sound").child("Beat");
+       // storageReference = FirebaseStorage.getInstance().getReference().child("\"sound/\"+user.getUid()+\"/\"+soundType+\"/\"+soundName+\".mp3\"")
        /* songRef = database.getInstance().getReference().child("Song");
         vocalRef = database.getInstance().getReference().child("Vocal");*/
 
@@ -146,9 +147,9 @@ public class UserContentFragment extends Fragment {
 
 
         adapter
-                = new FirebaseRecyclerAdapter<Sound, UserContentFragment.SoundsViewHolder>(options) {
+                = new FirebaseRecyclerAdapter<Sound, BackupUserBeatsContentFragmentNotInUse.SoundsViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull UserContentFragment.SoundsViewHolder holder, int position, @NonNull Sound model) {
+            protected void onBindViewHolder(@NonNull BackupUserBeatsContentFragmentNotInUse.SoundsViewHolder holder, int position, @NonNull Sound model) {
                 System.out.println("test in bindeViewModel");
 
 
@@ -157,7 +158,11 @@ public class UserContentFragment extends Fragment {
                 holder.artist.setText(model.getSoundVocalName());
 
                 DatabaseReference databaseReference = getRef(position);
-                //StorageReference  storageReference = (model.getSoundDownloadUrl());
+                //StorageReference storageReference = new StorageReference().child("\"sound/\"+user.getUid()+\"/\"+soundType+\"/\"+soundName+\".mp3\"");
+
+
+
+                        //(model.getSoundDownloadUrl());
 
 
 
@@ -168,6 +173,10 @@ public class UserContentFragment extends Fragment {
                                     .setPositiveButton(R.string.agree_delete_sound, new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int id) {
                                             adapter.getRef(position).removeValue();
+
+
+
+
 
                                             dialog.dismiss();
                                         }
@@ -195,11 +204,11 @@ public class UserContentFragment extends Fragment {
 
             @NonNull
             @Override
-            public UserContentFragment.SoundsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            public BackupUserBeatsContentFragmentNotInUse.SoundsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
 
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.user_dashboard_sound_item, parent, false);
-                UserContentFragment.SoundsViewHolder viewHolder = new UserContentFragment.SoundsViewHolder(view);
+                BackupUserBeatsContentFragmentNotInUse.SoundsViewHolder viewHolder = new BackupUserBeatsContentFragmentNotInUse.SoundsViewHolder(view);
                 return viewHolder;
 
             }

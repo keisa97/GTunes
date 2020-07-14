@@ -1,4 +1,4 @@
-package com.example.musicwithnav;
+package com.example.musicwithnav.models;
 
 import com.google.firebase.database.DatabaseReference;
 

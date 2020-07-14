@@ -27,15 +27,18 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.musicwithnav.FirebaseDAO;
-import com.example.musicwithnav.Massage;
+import com.example.musicwithnav.FirebaseUserDAO;
 import com.example.musicwithnav.R;
+import com.example.musicwithnav.models.User;
 import com.example.musicwithnav.ui.MyAccount.ui.myaccount.MyAccount_activity;
 import com.example.musicwithnav.ui.home.inHomeFragment.ViewPagerAdapter;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -44,12 +47,18 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
+import java.util.Calendar;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -71,6 +80,10 @@ public class UserDashboardFragment extends Fragment {
     FirebaseAuth mAuth;
     private Button btn_logout;
 
+    private Button btn_edit_details;
+
+    private TextView tv_user_details;
+
     private FirebaseUser user;
 
 
@@ -84,6 +97,9 @@ public class UserDashboardFragment extends Fragment {
     //request codes
     final int TAKE_IMAGE_CODE = 1001;
     final int IMAGE_FROM_GALLEY_CODE = 1002;
+
+    private String userDetails;
+
 
     //callback when our user is Logged in/Logged out
     FirebaseAuth.AuthStateListener mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -119,6 +135,7 @@ public class UserDashboardFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.user_dashboard_fragment, container, false);
+
     }
 
     @Override
@@ -134,6 +151,9 @@ public class UserDashboardFragment extends Fragment {
         profileImageView= view.findViewById(R.id.imageView_dashboard_userPhoto);
         btn_logout = view.findViewById(R.id.btn_userDashboard_logout);
 
+        btn_edit_details = view.findViewById(R.id.btn_user_edit_details);
+
+        tv_user_details = view.findViewById(R.id.tv_dashboard_details);
 
         profileImageView.setOnClickListener((v -> {
 
@@ -148,6 +168,8 @@ public class UserDashboardFragment extends Fragment {
         btn_logout.setOnClickListener(v -> logout());
 
 
+        btn_edit_details.setOnClickListener(v -> { showDialog(); });
+
 
 
         user = FirebaseAuth.getInstance().getCurrentUser();
@@ -159,7 +181,14 @@ public class UserDashboardFragment extends Fragment {
         //profileImageView.setImageBitmap(bitmap);
 
 
+        //set user when singed in:
+       // databaseUserSet();
 
+        //set user description
+        if(tv_user_details.toString() == ""){
+            tv_user_details.setText("set description for yourself");
+        }
+        databaseRead();
 
         //TODO:move to a class(MVC)
         /*//re to message in json (message Table)
@@ -194,7 +223,7 @@ public class UserDashboardFragment extends Fragment {
         //if we have a user:
         //sender ID:
         String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        FirebaseDAO.shared.saveMessage(new Massage("text",null,uid));
+        //FirebaseDAO.shared.saveMessage(new Message("text",null,uid));
 
 
 
@@ -204,8 +233,10 @@ public class UserDashboardFragment extends Fragment {
         viewPager = view.findViewById(R.id.viewpager_dashboard_user_content);
         viewPagerAdapter = new ViewPagerAdapter(getChildFragmentManager());
         //add Fragment:
-        viewPagerAdapter.addFragment(new UserContentFragment(),"My Sounds");
-        viewPagerAdapter.addFragment(new UserCollaborationsFragment(),"Collaborations");
+        viewPagerAdapter.addFragment(new UserInstrumentalContentFragment(),"My Instrumental");
+        viewPagerAdapter.addFragment(new UserAcapellaContentFragment(),"My Acapella");
+        viewPagerAdapter.addFragment(new UserBeatsContentFragment(),"My Beats");
+        //viewPagerAdapter.addFragment(new UserCollaborationsFragment(),"Collaborations");
 
 
         viewPager.setAdapter(viewPagerAdapter);
@@ -222,6 +253,8 @@ public class UserDashboardFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(UserDashboardViewModel.class);
         // TODO: Use the ViewModel
+        databaseRead();
+
     }
 
 
@@ -411,6 +444,91 @@ public class UserDashboardFragment extends Fragment {
 
         }
     }
+    //dialog for user description
+    private void showDialog(){
+        AlertDialog.Builder mBuilder = new AlertDialog.Builder(getActivity());
+        View mView = getLayoutInflater().inflate(R.layout.dialog_change_user_details,null);
+        mBuilder.setTitle("describe yourself");
+        Spinner mSpinner = mView.findViewById(R.id.planets_spinner);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
+                android.R.layout.simple_spinner_item, getResources().getStringArray(R.array.sounds_types));
+
+
+
+
+        //getting result from edit text: - using mView and the EditText(final)
+
+        final EditText et_dialog_user_details = mView.findViewById(R.id.et_dialog_user_details);
+
+
+
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        mSpinner.setAdapter(adapter);
+
+        mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                userDetails =  et_dialog_user_details.getText().toString();
+                //databaseDetailsSet();
+                databaseUserSet();
+
+
+            }
+        });
+
+        mBuilder.setNegativeButton("Dismiss", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        mBuilder.setView(mView);
+        AlertDialog dialog = mBuilder.create();
+        dialog.show();
+    }
+
+    private void databaseUserSet(){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+
+
+        FirebaseUserDAO.shared.saveUser(new User(user.getDisplayName(), user.getUid(), user.getPhotoUrl().toString(), Calendar.getInstance().getTime().toString(),userDetails));
+
+    }
+
+    private void databaseDetailsSet(){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+
+        FirebaseUserDAO.shared.saveDetailsOnly(new User(user.getDisplayName()));
+    }
+
+    private void databaseRead(){
+
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference("Users/" + user.getDisplayName());
+
+// Attach a listener to read the data at our posts reference
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                User user = dataSnapshot.getValue(User.class);
+                System.out.println(user);
+                //if (userDetails != null){
+                    tv_user_details.setText(user.getUserDetails().toString());
+
+                //}
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("The read failed: " + databaseError.getCode());
+            }
+        });
+    }
+
 
 
 }

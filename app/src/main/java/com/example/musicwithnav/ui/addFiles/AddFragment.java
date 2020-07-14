@@ -37,7 +37,7 @@ import android.widget.Toast;
 
 import com.example.musicwithnav.FirebaseSoundDAO;
 import com.example.musicwithnav.R;
-import com.example.musicwithnav.Sound;
+import com.example.musicwithnav.models.Sound;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -47,6 +47,7 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageMetadata;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.io.ByteArrayOutputStream;
@@ -169,14 +170,15 @@ public class AddFragment extends Fragment {
         });
 
         btnImageChoose.setOnClickListener(v -> {
-            showSoundImageChooser();
+            //for simple image chooser without cropping
+            //showSoundImageChooser();
 
-            /*CropImage.activity()
+            CropImage.activity()
                     .setGuidelines(CropImageView.Guidelines.ON)
-                    .setMaxCropResultSize(1000,1000)
+                    //.setMaxCropResultSize(1000,1000)
                     .setFixAspectRatio(true)
                     .setCropShape(CropImageView.CropShape.RECTANGLE)
-                    .start(getActivity());*/
+                    .start(getActivity(),this);
 
 
         });
@@ -206,15 +208,22 @@ public class AddFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
 
 
-        /*if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+        //for cropping use
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
                 Uri resultUri = result.getUri();
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), resultUri);
+                try {
+                    bm = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), resultUri);
+                    btnImageChoose.setImageBitmap(bm);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
                 Exception error = result.getError();
+                System.out.println(error);
             }
-        }*/
+        }
 
 
 
@@ -241,7 +250,7 @@ public class AddFragment extends Fragment {
 
 
                 case  PICK_IMAGE_REQUEST:
-            //option 2:
+            //option 2: without cropping image
             if (requestCode == PICK_IMAGE_REQUEST) {
                 if (resultCode == RESULT_OK) {
 
@@ -254,23 +263,6 @@ public class AddFragment extends Fragment {
 
                         btnImageChoose.setImageBitmap(bm);
 
-
-
-
-
-
-
-                        /*CropImage.activity()
-                                .setMaxCropResultSize(1000,1000)
-                                .start(getContext(),this);*/
-                        /*cropImageView.setImageBitmap(bm);
-                        Bitmap cropped = cropImageView.getCroppedImage();
-                        btnImageChoose.setImageBitmap(cropped);
-                        handleImageUpload(cropped);*/
-
-
-
-
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     } catch (IOException e) {
@@ -282,6 +274,8 @@ public class AddFragment extends Fragment {
 
 
             }
+
+
 
             }
 
@@ -303,24 +297,19 @@ public class AddFragment extends Fragment {
     }
 
     private void showSoundFileChooser() {
-       /* Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
-*/
-        //Intent upload = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Audio.Media.EXTERNAL_CONTENT_URI);
-        Intent upload = new Intent();
-        upload.setType("audio/*");
-        upload.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(upload,"select audio"),PICK_SOUND_REQUEST);
+
+        Intent soundChooseIntent = new Intent();
+        soundChooseIntent.setType("audio/*");
+        soundChooseIntent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(soundChooseIntent,"select audio"),PICK_SOUND_REQUEST);
 
     }
 
     private void showSoundImageChooser(){
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+        Intent imageChooseIntent = new Intent();
+        imageChooseIntent.setType("image/*");
+        imageChooseIntent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(imageChooseIntent, "Select Picture"), PICK_IMAGE_REQUEST);
 
 
 

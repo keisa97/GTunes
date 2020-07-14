@@ -5,7 +5,6 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,21 +13,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.musicwithnav.R;
-import com.example.musicwithnav.Sound;
-import com.example.musicwithnav.ui.home.inHomeFragment.Adapter.ArtistFragmentAdapter;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.example.musicwithnav.models.Sound;
+import com.example.musicwithnav.ui.home.inHomeFragment.Adapter.SoundFragmentAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -42,12 +36,11 @@ public class InstrumentalFragment extends Fragment {
     private View soundsView;
     private RecyclerView myRecylceViewSoundsList;
 
-    List<Sound> soundsList = new ArrayList<>();
     ProgressDialog dialog;
 
     // FirebaseRecyclerAdapter<Sound, ArtistFragment.SoundsViewHolder> adapter;
 
-    ArtistFragmentAdapter madapter;
+    SoundFragmentAdapter madapter;
 
     // private FirebaseDatabase database; //= FirebaseDatabase.getInstance();
 
@@ -82,7 +75,7 @@ public class InstrumentalFragment extends Fragment {
         //   myRecylceViewSoundsList.setHasFixedSize(true);
         myRecylceViewSoundsList.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        dialog=new ProgressDialog(getContext());
+        dialog = new ProgressDialog(getContext());
         dialog.show();
         dialog.setCancelable(false);
         auth = FirebaseAuth.getInstance();
@@ -98,18 +91,21 @@ public class InstrumentalFragment extends Fragment {
         samplesRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                List<Sound> soundsList = new ArrayList<>();
 
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                     Sound sound = dataSnapshot1.getValue(Sound.class);
+
                     soundsList.add(sound);
                 }
                 dialog.dismiss();
-                madapter = new ArtistFragmentAdapter(soundsList, getContext());
+                madapter = new SoundFragmentAdapter(soundsList, getContext());
                 LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(),
                         LinearLayoutManager.VERTICAL, false);
                 myRecylceViewSoundsList.setLayoutManager(layoutManager);
                 myRecylceViewSoundsList.setAdapter(madapter);
                 madapter.notifyDataSetChanged();
+
 
             }
 

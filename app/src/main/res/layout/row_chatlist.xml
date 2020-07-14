@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:contentPadding="3dp"
+    android:layout_marginBottom="7dp"
+    android:layout_marginTop="7dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginLeft="5dp"
+    android:background="@drawable/rounded_backround_item_sound">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+
+        <!--imageview: user profile image-->
+        <androidx.cardview.widget.CardView
+            android:scaleType="centerCrop"
+            android:layout_gravity="center"
+            android:id="@+id/pivCV"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            app:cardCornerRadius="250dp"
+            app:cardBackgroundColor="#000000">
+
+
+            <ImageView
+                android:id="@+id/profileIv"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_gtune_launcher_round"/>
+
+        </androidx.cardview.widget.CardView>
+
+
+
+        <androidx.cardview.widget.CardView
+            android:scaleType="centerCrop"
+            android:id="@+id/pivCV2"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            app:cardCornerRadius="250dp">
+
+
+            <!--imageView: online/offline status-->
+            <ImageView
+                android:id="@+id/onlineStatusIv"
+                android:layout_width="25dp"
+                android:layout_height="25dp"/>
+
+        </androidx.cardview.widget.CardView>
+
+
+
+
+        <!--username-->
+        <TextView
+            android:id="@+id/nameTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="from User Name"
+            android:layout_marginStart="5dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_toEndOf="@+id/pivCV"/>
+        <!--last message-->
+        <TextView
+            android:id="@+id/lastMessageTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="The last message"
+            android:layout_marginStart="5dp"
+            android:maxLines="2"
+            android:layout_marginTop="3dp"
+            android:layout_toEndOf="@+id/pivCV"
+            android:layout_below="@+id/nameTv" />
+
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

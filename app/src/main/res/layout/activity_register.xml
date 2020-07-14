@@ -4,27 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#363636"
+
     tools:context=".ui.MyAccount.ui.myaccount.RegisterActivity">
 
     <TextView
         android:id="@+id/tv_register_activity_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Register"
+        android:text=""
         android:textAlignment="center"
-        android:textColor="#000000"
+        android:textColor="#d6d6d6"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/LoginLogo"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:contentDescription="@string/app_name"
+        android:scaleType="centerInside"
+        android:src="@drawable/gtunes_logo"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/btnLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        tools:visibility="visible" />
 
     <EditText
         android:id="@+id/etEmail_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:background="@drawable/round_bg_login_register"
+        android:textSize="30dp"
         android:ems="10"
-        android:hint="Email"
+        android:hint=" Email"
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toTopOf="@+id/etpassword_register"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,9 +53,13 @@
         android:id="@+id/etpassword_register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
+        android:background="@drawable/round_bg_login_register"
         android:ems="10"
-        android:hint="Password"
+        android:hint=" Password"
+        android:textSize="30dp"
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toTopOf="@+id/user_register_btn"
         app:layout_constraintEnd_toEndOf="parent"
@@ -53,10 +76,23 @@
         android:id="@+id/user_register_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="register user"
-        android:textSize="20sp"
+        android:text="  register user  "
+        android:textSize="15sp"
+        android:background="@drawable/round_bg_login_register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thank you for join us!"
+        android:textColor="#D6D6D6"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_register_btn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

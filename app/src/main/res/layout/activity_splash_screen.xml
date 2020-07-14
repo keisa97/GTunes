@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    android:background="#363636"
     tools:context=".ui.MyAccount.ui.myaccount.SplashScreenActivity">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="500dp"
+        android:layout_height="500dp"
         android:layout_gravity="center"
         android:scaleType="centerInside"
-        app:srcCompat="@drawable/ic_watermelon_svg"
+        app:srcCompat="@drawable/gtunes_logo"
         tools:ignore="VectorDrawableCompat" />
 </FrameLayout>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="5dp"
+    android:layout_marginTop="7dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginBottom="7dp"
+    android:background="@drawable/rounded_backround_item_sound_dark_theme"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/tv_user_soundItem_artist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp"
+        android:text="artist"
+        android:textColor="#DDDDDD"
+        android:textSize="14sp"
+        android:background="@color/fui_transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_user_item_sound_name" />
+
+    <Button
+        android:id="@+id/btn_user_sound_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:background="@color/fui_transparent"
+        android:text="🗑"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tv_user_item_sound_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/allerta"
+        android:text="song name"
+        android:textColor="#DDDDDD"
+        android:textSize="20dp"
+        app:layout_constraintStart_toEndOf="@+id/imageview_user_item_sound_cover"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageview_user_item_sound_cover"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_user_sound_item_comments"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/watermelon_simple" />
+
+    <SeekBar
+        android:id="@+id/seekBar_user_sound_item"
+        android:layout_width="0dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline5"
+        app:layout_constraintEnd_toStartOf="@+id/tv_user_sound_item_timeLeft"
+        app:layout_constraintStart_toEndOf="@+id/btn_user_sound_item_play" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="100dp" />
+
+    <Button
+        android:id="@+id/btn_user_sound_item_play"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/play_btn_dark"
+        android:text=""
+        android:textAlignment="center"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline5"
+        app:layout_constraintStart_toEndOf="@+id/imageview_user_item_sound_cover" />
+
+    <Button
+        android:id="@+id/btn_user_sound_item_pause"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/pause_btn_dark"
+        android:text=""
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/guideline5"
+        app:layout_constraintStart_toEndOf="@+id/imageview_user_item_sound_cover" />
+
+    <TextView
+        android:id="@+id/tv_user_sound_item_timeLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="time left"
+        android:textColor="#DDDDDD"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/guideline5"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+<!--    <TextView-->
+<!--        android:id="@+id/tv_user_sound_stars_count"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginEnd="24dp"-->
+<!--        android:text="0"-->
+<!--        android:textColor="#DDDDDD"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/btn_user_sound_item_star"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/btn_user_sound_item_star" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/btn_user_sound_item_star"-->
+<!--        android:layout_width="40dp"-->
+<!--        android:layout_height="35dp"-->
+<!--        android:layout_marginEnd="16dp"-->
+<!--        android:background="@drawable/ic_star_border_black_24dp"-->
+<!--        android:textAlignment="center"-->
+<!--        android:textSize="15dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/btn_user_sound_item_delete"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/tv_user_sound_stars_count"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/btn_user_sound_item_delete" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/btn_user_sound_item_delete"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="25dp"-->
+<!--        android:background="@drawable/rounded_backround_dark_for_btns"-->
+<!--        android:text="share"-->
+<!--        android:textColor="#363636"-->
+<!--        android:textSize="15dp"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/btn_user_sound_item_play"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/btn_user_sound_item_comments" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/btn_user_sound_item_comments"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="25dp"-->
+<!--        android:layout_marginBottom="8dp"-->
+<!--        android:background="@drawable/rounded_backround_dark_for_btns"-->
+<!--        android:text="comment"-->
+<!--        android:textColor="#363636"-->
+<!--        android:textSize="15dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/imageview_user_item_sound_cover" />-->
+
+    <TextView
+        android:id="@+id/tv_user_soundItem_producer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="TextView"
+        android:textColor="#DDDDDD"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_user_soundItem_artist" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

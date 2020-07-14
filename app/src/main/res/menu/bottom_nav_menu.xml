@@ -6,19 +6,19 @@
         android:icon="@drawable/ic_search_black_24dp"
         android:title="@string/title_discover" />
 
-    <item
-        android:id="@+id/navigation_hits"
-        android:icon="@drawable/ic_whatshot_black_24dp"
-        android:title="@string/title_hits" />
+<!--    <item-->
+<!--        android:id="@+id/navigation_hits"-->
+<!--        android:icon="@drawable/ic_whatshot_black_24dp"-->
+<!--        android:title="@string/title_hits" />-->
 
     <item
         android:id="@+id/addFragment"
         android:icon="@drawable/ic_add_box_black_24dp"
         android:title="@string/title_add" />
-    <item
-        android:id="@+id/navigation_notifications"
-        android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/title_notifications" />
+<!--    <item-->
+<!--        android:id="@+id/navigation_notifications"-->
+<!--        android:icon="@drawable/ic_notifications_black_24dp"-->
+<!--        android:title="@string/title_notifications" />-->
 
     <item
         android:id="@+id/navigation_user_dashboard"

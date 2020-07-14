@@ -23,7 +23,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.musicwithnav.R;
-import com.example.musicwithnav.Sound;
+import com.example.musicwithnav.models.Sound;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;

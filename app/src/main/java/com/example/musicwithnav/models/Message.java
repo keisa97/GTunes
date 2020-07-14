@@ -1,17 +1,17 @@
-package com.example.musicwithnav;
+package com.example.musicwithnav.models;
 
-public class Massage {
+public class Message {
 
     private String message;
     private String messageID;
     private String senderID;
 
     //for firebase:
-    public Massage() {
+    public Message() {
     }
 
     //for us:
-    public Massage(String message, String messageID, String senderID) {
+    public Message(String message, String messageID, String senderID) {
         this.message = message;
         this.messageID = messageID;
         this.senderID = senderID;

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#B5313131"
     tools:context=".ui.UserDashboard.UserDashboardFragment">
 
     <androidx.constraintlayout.widget.Guideline
@@ -41,19 +42,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="user name"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_userDashboard_logout"
         app:layout_constraintStart_toEndOf="@+id/imageView_dashboard_userPhoto"
         app:layout_constraintTop_toTopOf="@+id/imageView_dashboard_userPhoto" />
 
     <TextView
-        android:id="@+id/tv_dashboard_description"
+        android:id="@+id/tv_dashboard_details"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="24dp"
-        android:text="couple f word about the user which is currerctly sing in"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -71,7 +73,11 @@
         android:id="@+id/btn_userDashboard_logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/rounded_backround_item_sound_dark_theme"
         android:text="⎋"
+        android:textColor="#DC424C"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -92,7 +98,8 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="My Sounds" />
+            android:text="My Sounds"
+            />
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager.widget.ViewPager
@@ -105,4 +112,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tabs_user_dashboard"
         app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btn_user_edit_details"
+        android:layout_width="28dp"
+        android:layout_height="44dp"
+        android:layout_marginEnd="4dp"
+        android:background="#00FFFFFF"
+        android:text="🖋"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_dashboard_details"
+        tools:text="🖋" />
 </androidx.constraintlayout.widget.ConstraintLayout>

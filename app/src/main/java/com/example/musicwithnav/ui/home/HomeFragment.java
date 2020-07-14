@@ -15,9 +15,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.musicwithnav.R;
-import com.example.musicwithnav.Sound;
+import com.example.musicwithnav.models.Sound;
 import com.example.musicwithnav.ui.home.inHomeFragment.ArtistFragment;
+import com.example.musicwithnav.ui.home.inHomeFragment.BeatFragment;
 import com.example.musicwithnav.ui.home.inHomeFragment.InstrumentalFragment;
+import com.example.musicwithnav.ui.home.inHomeFragment.AcapellaFragment;
 import com.example.musicwithnav.ui.home.inHomeFragment.ProducerFragment;
 import com.example.musicwithnav.ui.home.inHomeFragment.ViewPagerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -120,8 +122,8 @@ public class HomeFragment extends Fragment {
         viewPager = getView().findViewById(R.id.viepager_home_fragment);
         viewPagerAdapter = new ViewPagerAdapter(getChildFragmentManager());
         //add Fragment:
-        viewPagerAdapter.addFragment(new ArtistFragment(),"Acapella");
-        viewPagerAdapter.addFragment(new ProducerFragment(),"Beat");
+        viewPagerAdapter.addFragment(new AcapellaFragment(),"Acapella");
+        viewPagerAdapter.addFragment(new BeatFragment(),"Beat");
         viewPagerAdapter.addFragment(new InstrumentalFragment(),"Instrumental");
 
 

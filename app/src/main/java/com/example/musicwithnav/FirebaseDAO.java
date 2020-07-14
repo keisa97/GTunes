@@ -2,9 +2,9 @@ package com.example.musicwithnav;
 
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.ViewModel;
 
-import com.google.firebase.auth.FirebaseUser;
+import com.example.musicwithnav.models.Message;
+import com.example.musicwithnav.models.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -12,7 +12,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 //Usage: FirebaseDAO.shared.saveMessage
@@ -38,7 +37,7 @@ public class FirebaseDAO {
 
     }
 
-    public void saveMessage(Massage message){
+    public void saveMessage(Message message){
         //new database listing:
         DatabaseReference newMessageRef = FirebaseDatabase.getInstance()
                 .getReference(MESSAGES)
@@ -53,7 +52,7 @@ public class FirebaseDAO {
 
     public void readMessages(MessageListener messageListener){
 
-        ArrayList<Massage> messages = new ArrayList<>();
+        ArrayList<Message> messages = new ArrayList<>();
         FirebaseDatabase.getInstance().
                 getReference(MESSAGES)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
@@ -62,7 +61,7 @@ public class FirebaseDAO {
                         //children=> json of the messages
                         for (DataSnapshot child : dataSnapshot.getChildren()) {
                             //each child is a single message json
-                            messages.add(child.getValue(Massage.class));
+                            messages.add(child.getValue(Message.class));
                         }
                         messageListener.messagesArrived(messages);
                     }
@@ -75,7 +74,7 @@ public class FirebaseDAO {
     }
 
     public interface MessageListener{
-        void messagesArrived(List<Massage> messages);
+        void messagesArrived(List<Message> messages);
     }
 
 
