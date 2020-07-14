@@ -90,47 +90,47 @@ public class UserSoundFragmentAdapter extends RecyclerView.Adapter<UserSoundFrag
         });
 
 
-        holder.btn_delete.setOnClickListener((v -> {
-            //set dialog before delete:
-//            AlertDialog.Builder builder = new AlertDialog.Builder(context);
-//            builder.setMessage(R.string.dialog_delete_sound)
-//                    .setPositiveButton(R.string.agree_delete_sound, new DialogInterface.OnClickListener() {
-//                        public void onClick(DialogInterface dialog, int id) {
-//                            //modell(position).removeValue();
+//        holder.btn_delete.setOnClickListener((v -> {
+//            //set dialog before delete:
+////            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+////            builder.setMessage(R.string.dialog_delete_sound)
+////                    .setPositiveButton(R.string.agree_delete_sound, new DialogInterface.OnClickListener() {
+////                        public void onClick(DialogInterface dialog, int id) {
+////                            //modell(position).removeValue();
+////
+////
+////
+////
+////
+////                            dialog.dismiss();
+////                        }
+////                    })
+////                    .setNegativeButton(R.string.cancel_delete_sound, new DialogInterface.OnClickListener() {
+////                        public void onClick(DialogInterface dialog, int id) {
+////                            dialog.cancel();
+////                        }
+////                    });
+////
+////            if(holder.btn_delete.getParent() != null) {
+////                ((ViewGroup)holder.btn_delete.getParent()).removeView(holder.btn_delete); // <- fix
+////            }
+////            (ViewGroup)holder.addView(holder.btn_delete);
+////
+////            // Create the AlertDialog object and return it
+////
+////
+////            builder.setView(v);
+////            final AlertDialog dialog = builder.create();
+////            dialog.show();
 //
 //
 //
 //
 //
-//                            dialog.dismiss();
-//                        }
-//                    })
-//                    .setNegativeButton(R.string.cancel_delete_sound, new DialogInterface.OnClickListener() {
-//                        public void onClick(DialogInterface dialog, int id) {
-//                            dialog.cancel();
-//                        }
-//                    });
+//            //databaseReference.removeValue();
+//                             // modelList.get(position).
 //
-//            if(holder.btn_delete.getParent() != null) {
-//                ((ViewGroup)holder.btn_delete.getParent()).removeView(holder.btn_delete); // <- fix
-//            }
-//            (ViewGroup)holder.addView(holder.btn_delete);
-//
-//            // Create the AlertDialog object and return it
-//
-//
-//            builder.setView(v);
-//            final AlertDialog dialog = builder.create();
-//            dialog.show();
-
-
-
-
-
-            //databaseReference.removeValue();
-                             // modelList.get(position).
-
-        }));
+//        }));
 
 
 //        holder.like.setOnClickListener((view) -> {
@@ -257,7 +257,7 @@ public class UserSoundFragmentAdapter extends RecyclerView.Adapter<UserSoundFrag
 
         Button artist;
         Button like;
-        Button btn_delete;
+        //Button btn_delete;
         Button btn_play, btn_pause;
 
 
@@ -270,7 +270,7 @@ public class UserSoundFragmentAdapter extends RecyclerView.Adapter<UserSoundFrag
             super(itemView);
             btn_play = itemView.findViewById(R.id.btn_user_sound_item_play);
             btn_pause = itemView.findViewById(R.id.btn_user_sound_item_pause);
-            btn_delete = itemView.findViewById(R.id.btn_user_sound_delete);
+            //btn_delete = itemView.findViewById(R.id.btn_user_sound_delete);
             soundName = itemView.findViewById(R.id.tv_user_item_sound_name);
             artist = itemView.findViewById(R.id.tv_user_soundItem_artist);
             producer = itemView.findViewById(R.id.tv_user_soundItem_producer);
