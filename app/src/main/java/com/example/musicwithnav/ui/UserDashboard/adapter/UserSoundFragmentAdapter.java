@@ -23,6 +23,9 @@ import com.bumptech.glide.Glide;
 import com.example.musicwithnav.R;
 import com.example.musicwithnav.models.Sound;
 import com.example.musicwithnav.ui.AnotherUserPage.AnotherUserPageActivity;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.IOException;
 import java.util.List;
@@ -90,47 +93,62 @@ public class UserSoundFragmentAdapter extends RecyclerView.Adapter<UserSoundFrag
         });
 
 
-//        holder.btn_delete.setOnClickListener((v -> {
-//            //set dialog before delete:
-////            AlertDialog.Builder builder = new AlertDialog.Builder(context);
-////            builder.setMessage(R.string.dialog_delete_sound)
-////                    .setPositiveButton(R.string.agree_delete_sound, new DialogInterface.OnClickListener() {
-////                        public void onClick(DialogInterface dialog, int id) {
-////                            //modell(position).removeValue();
-////
-////
-////
-////
-////
-////                            dialog.dismiss();
-////                        }
-////                    })
-////                    .setNegativeButton(R.string.cancel_delete_sound, new DialogInterface.OnClickListener() {
-////                        public void onClick(DialogInterface dialog, int id) {
-////                            dialog.cancel();
-////                        }
-////                    });
-////
-////            if(holder.btn_delete.getParent() != null) {
-////                ((ViewGroup)holder.btn_delete.getParent()).removeView(holder.btn_delete); // <- fix
-////            }
-////            (ViewGroup)holder.addView(holder.btn_delete);
-////
-////            // Create the AlertDialog object and return it
-////
-////
-////            builder.setView(v);
-////            final AlertDialog dialog = builder.create();
-////            dialog.show();
+
+        holder.btn_delete.setOnClickListener((v -> {
+
+//            int newPosition = holder.getAdapterPosition();
+//            model.remove(newPosition);
+//            notifyItemRemoved(newPosition);
+//            notifyItemRangeChanged(newPosition, model.size());
+//            modelList.getRef(position).remove();
+
+            //holder.itemView.
+                    //holder.getAdapterPosition();
+            //notifyItemRemoved(holder.getAdapterPosition());
+
+            //DatabaseReference itemRef = getRef(position);
+
+            //.getRef(position).remove()
+        //set dialog before delete:
+//            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+//            builder.setMessage(R.string.dialog_delete_sound)
+//                    .setPositiveButton(R.string.agree_delete_sound, new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface dialog, int id) {
+//                            //modell(position).removeValue();
 //
 //
 //
 //
 //
-//            //databaseReference.removeValue();
-//                             // modelList.get(position).
+//                            dialog.dismiss();
+//                        }
+//                    })
+//                    .setNegativeButton(R.string.cancel_delete_sound, new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface dialog, int id) {
+//                            dialog.cancel();
+//                        }
+//                    });
 //
-//        }));
+//            if(holder.btn_delete.getParent() != null) {
+//                ((ViewGroup)holder.btn_delete.getParent()).removeView(holder.btn_delete); // <- fix
+//            }
+//            (ViewGroup)holder.addView(holder.btn_delete);
+//
+//            // Create the AlertDialog object and return it
+//
+//
+//            builder.setView(v);
+//            final AlertDialog dialog = builder.create();
+//            dialog.show();
+
+
+
+
+
+            //databaseReference.removeValue();
+                             // modelList.get(position).
+
+        }));
 
 
 //        holder.like.setOnClickListener((view) -> {
@@ -257,7 +275,7 @@ public class UserSoundFragmentAdapter extends RecyclerView.Adapter<UserSoundFrag
 
         Button artist;
         Button like;
-        //Button btn_delete;
+        Button btn_delete;
         Button btn_play, btn_pause;
 
 
@@ -270,7 +288,7 @@ public class UserSoundFragmentAdapter extends RecyclerView.Adapter<UserSoundFrag
             super(itemView);
             btn_play = itemView.findViewById(R.id.btn_user_sound_item_play);
             btn_pause = itemView.findViewById(R.id.btn_user_sound_item_pause);
-            //btn_delete = itemView.findViewById(R.id.btn_user_sound_delete);
+            btn_delete = itemView.findViewById(R.id.btn_user_sound_delete);
             soundName = itemView.findViewById(R.id.tv_user_item_sound_name);
             artist = itemView.findViewById(R.id.tv_user_soundItem_artist);
             producer = itemView.findViewById(R.id.tv_user_soundItem_producer);
@@ -330,5 +348,26 @@ public class UserSoundFragmentAdapter extends RecyclerView.Adapter<UserSoundFrag
         mSeekbarUpdateHandler.post(mRunnable);
 
     }
+
+
+//    public void deleteItem(int position){
+//        Sound sound = modelList.get(position);
+//        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Booking");
+//        ref.child(String.valueOf(sound)).removeValue();
+//    }
+    public void deleteSound(DataSnapshot dataSnapshot) {
+
+
+        DataSnapshot firstChild = dataSnapshot.getChildren().iterator().next();
+        firstChild.getRef().removeValue();
+    }
+
+    private void removeItem(int position) {
+//        int newPosition = holder.getAdapterPosition();
+//        model.remove(newPosition);
+//        notifyItemRemoved(newPosition);
+//        notifyItemRangeChanged(newPosition, model.size());
+    }
+
 }
 

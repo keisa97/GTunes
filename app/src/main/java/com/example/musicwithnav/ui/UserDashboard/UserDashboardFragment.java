@@ -40,6 +40,9 @@ import com.example.musicwithnav.FirebaseUserDAO;
 import com.example.musicwithnav.R;
 import com.example.musicwithnav.models.User;
 import com.example.musicwithnav.ui.MyAccount.ui.myaccount.MyAccount_activity;
+import com.example.musicwithnav.ui.UserDashboard.adapter.tabs.userTabs.UserAcapellaContentFragment;
+import com.example.musicwithnav.ui.UserDashboard.adapter.tabs.userTabs.UserBeatsContentFragment;
+import com.example.musicwithnav.ui.UserDashboard.adapter.tabs.userTabs.UserInstrumentalContentFragment;
 import com.example.musicwithnav.ui.home.inHomeFragment.ViewPagerAdapter;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -188,6 +191,7 @@ public class UserDashboardFragment extends Fragment {
         if(tv_user_details.toString() == ""){
             tv_user_details.setText("set description for yourself");
         }
+
         databaseRead();
 
         //TODO:move to a class(MVC)
@@ -515,11 +519,12 @@ public class UserDashboardFragment extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
-                System.out.println(user);
-                //if (userDetails != null){
+                System.out.println("databeReadMethod" + user);
+                if (user.getUserDetails() != null){
+                    System.out.println("is it in");
                     tv_user_details.setText(user.getUserDetails().toString());
 
-                //}
+                }
             }
 
             @Override

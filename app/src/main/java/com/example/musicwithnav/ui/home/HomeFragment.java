@@ -16,11 +16,10 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.musicwithnav.R;
 import com.example.musicwithnav.models.Sound;
-import com.example.musicwithnav.ui.home.inHomeFragment.ArtistFragment;
+import com.example.musicwithnav.ui.home.inHomeFragment.NotInUseArtistFragment;
 import com.example.musicwithnav.ui.home.inHomeFragment.BeatFragment;
 import com.example.musicwithnav.ui.home.inHomeFragment.InstrumentalFragment;
 import com.example.musicwithnav.ui.home.inHomeFragment.AcapellaFragment;
-import com.example.musicwithnav.ui.home.inHomeFragment.ProducerFragment;
 import com.example.musicwithnav.ui.home.inHomeFragment.ViewPagerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -173,7 +172,7 @@ public class HomeFragment extends Fragment {
         // Add the new tab fragment
         try {
             fragmentManager.beginTransaction()
-                    .replace(R.id.viepager_home_fragment, ArtistFragment.class.newInstance())
+                    .replace(R.id.viepager_home_fragment, NotInUseArtistFragment.class.newInstance())
                     .addToBackStack(BACK_STACK_ROOT_TAG)
                     .commit();
         } catch (IllegalAccessException e) {

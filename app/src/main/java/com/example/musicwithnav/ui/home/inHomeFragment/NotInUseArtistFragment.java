@@ -37,7 +37,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ArtistFragment extends Fragment {
+public class NotInUseArtistFragment extends Fragment {
 
 
     private View soundsView;
@@ -45,7 +45,7 @@ public class ArtistFragment extends Fragment {
 
     List<Sound> soundsList = new ArrayList<>();
 
-    FirebaseRecyclerAdapter<Sound, ArtistFragment.SoundsViewHolder> adapter;
+    FirebaseRecyclerAdapter<Sound, NotInUseArtistFragment.SoundsViewHolder> adapter;
 
     // private FirebaseDatabase database; //= FirebaseDatabase.getInstance();
 
@@ -305,9 +305,9 @@ public class ArtistFragment extends Fragment {
 
 
         adapter
-                = new FirebaseRecyclerAdapter<Sound, ArtistFragment.SoundsViewHolder>(options) {
+                = new FirebaseRecyclerAdapter<Sound, NotInUseArtistFragment.SoundsViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull ArtistFragment.SoundsViewHolder holder, int position, @NonNull Sound model) {
+            protected void onBindViewHolder(@NonNull NotInUseArtistFragment.SoundsViewHolder holder, int position, @NonNull Sound model) {
                 System.out.println("test in bindeViewModel");
 
                holder.soundName.setText(model.getSoundName());
@@ -319,11 +319,11 @@ public class ArtistFragment extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @NonNull
             @Override
-            public ArtistFragment.SoundsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            public NotInUseArtistFragment.SoundsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
 
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.sound_item, parent, false);
-                ArtistFragment.SoundsViewHolder viewHolder = new ArtistFragment.SoundsViewHolder(view);
+                NotInUseArtistFragment.SoundsViewHolder viewHolder = new NotInUseArtistFragment.SoundsViewHolder(view);
                 return viewHolder;
             }
         };

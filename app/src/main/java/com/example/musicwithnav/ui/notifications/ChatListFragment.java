@@ -3,9 +3,6 @@ package com.example.musicwithnav.ui.notifications;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -16,8 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.musicwithnav.MainActivity;
 import com.example.musicwithnav.R;
-import com.example.musicwithnav.chat.Chat;
-import com.example.musicwithnav.chat.ChatList;
+import com.example.musicwithnav.chat.model.Chat;
+import com.example.musicwithnav.chat.model.ChatList;
 import com.example.musicwithnav.chat.ChatListAdapter;
 import com.example.musicwithnav.models.User;
 import com.google.firebase.auth.FirebaseAuth;

@@ -34,7 +34,7 @@
         tools:layout="@layout/user_dashboard_fragment" />
     <fragment
         android:id="@+id/artistFragment"
-        android:name="com.example.musicwithnav.ui.home.inHomeFragment.ArtistFragment"
+        android:name="com.example.musicwithnav.ui.home.inHomeFragment.NotInUseArtistFragment"
         android:label="fragment_artist"
         tools:layout="@layout/fragment_acapella" />
     <fragment

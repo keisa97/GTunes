@@ -21,6 +21,7 @@ import com.bumptech.glide.Glide;
 import com.example.musicwithnav.R;
 import com.example.musicwithnav.models.Sound;
 import com.example.musicwithnav.ui.AnotherUserPage.AnotherUserPageActivity;
+import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.util.List;
@@ -79,10 +80,14 @@ public class SoundFragmentAdapter extends RecyclerView.Adapter<SoundFragmentAdap
 //            intent.setClass(this.context, AnotherUserPageActivity.class);
 //            startActivity(intent);
 
+            Gson gson = new Gson();
+            String modelAsAString = gson.toJson(model);
+
             Intent intent = new Intent(this.context, AnotherUserPageActivity.class);
             intent.putExtra("uid", model.getSoundVocalID());
+            intent.putExtra("model", modelAsAString);
 
-            //context.startActivity(intent);
+            context.startActivity(intent);
 
         });
 

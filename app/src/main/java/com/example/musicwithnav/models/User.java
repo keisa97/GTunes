@@ -81,6 +81,7 @@ public class User {
                 ", uid='" + uid + '\'' +
                 ", userProfileImageUrl='" + userProfileImageUrl + '\'' +
                 ", onlineStatus='" + onlineStatus + '\'' +
+                ", userDetails='" + userDetails + '\'' +
                 '}';
     }
 }

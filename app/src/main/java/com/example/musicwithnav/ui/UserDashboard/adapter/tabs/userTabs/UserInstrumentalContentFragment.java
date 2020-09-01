@@ -1,10 +1,17 @@
-package com.example.musicwithnav.ui.UserDashboard;
+package com.example.musicwithnav.ui.UserDashboard.adapter.tabs.userTabs;
 
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,12 +19,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.musicwithnav.R;
 import com.example.musicwithnav.models.Sound;
@@ -40,8 +41,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class UserBeatsContentFragment extends Fragment {
-
+public class UserInstrumentalContentFragment extends Fragment {
 
 
     private View soundsView;
@@ -93,7 +93,7 @@ public class UserBeatsContentFragment extends Fragment {
         currentUserId = auth.getCurrentUser().getUid();
 
 
-        samplesRef = FirebaseDatabase.getInstance().getReference().child("sound").child("Beat");
+        samplesRef = FirebaseDatabase.getInstance().getReference().child("sound").child("Instrumental");
         samplesRef.orderByChild("soundVocalID").equalTo(currentUserId);
 
 

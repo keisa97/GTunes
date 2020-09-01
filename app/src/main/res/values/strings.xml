@@ -23,5 +23,19 @@
     <string name="no">No</string>
     <string name="messageDeleted">message deleted</string>
     <string name="youCanDeleteOnlyYourMessages">you can delete only your messges</string>
+    <string name="typing">typing</string>
+    <string name="lastSeenAt">last Seen At</string>
+    <string name="cannotSendTheEmptyMesaage">cannot Send The Empty Mesaage</string>
+    <string name="blockedSuccessfully">blocked Successfully</string>
+    <string name="failed">failed</string>
+    <string name="unblockedSuccessfully">unblocked Successfully</string>
+    <string name="cameraOp">camera Open</string>
+    <string name="galleryOp">gallery Open</string>
+    <string name="chooseImageFrom">choose Image From</string>
+    <string name="cameraAndStorageBothPermissionAreNecessary">camera And Storage Both Permission Are Necessary</string>
+    <string name="storagePermissionIsNecessary">storage Permission Is Necessary</string>
+    <string name="online">online</string>
+    <string name="message">message</string>
+
 
 </resources>

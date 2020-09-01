@@ -1,4 +1,4 @@
-package com.example.musicwithnav.chat;
+package com.example.musicwithnav.chat.model;
 
 public class Chat {
 

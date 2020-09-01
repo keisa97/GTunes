@@ -35,6 +35,7 @@ public class FirebaseUserDAO {
 
         newUserRef.setValue(user);
 
+
     }
 
     public void saveDetailsOnly(User user){
