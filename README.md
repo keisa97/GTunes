@@ -17,4 +17,4 @@ accapella then contact the people who are responsible for these pieces and do a 
 Another way is you can upload your sound and find people who want to connect with you in the process!
 
 
-Join ss and be part of GTunes!
+Join us and be part of GTunes!
