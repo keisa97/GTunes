@@ -16,7 +16,7 @@ accapella then contact the people who are responsible for these pieces and do a 
 
 Another way is you can upload your sound and find people who want to connect with you in the process!
 
-![alt text](https://drive.google.com/file/d/1WyDH4bIea4NNpXxKT1XkaZoL4BTOAWaj/view?usp=sharing)
+![alt text](https://photos.app.goo.gl/sx2qf6M9rRXC4dXEA)
 
 ![alt text](http://url/to/img.png)
 
